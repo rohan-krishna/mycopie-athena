@@ -41,9 +41,11 @@ $args = array(
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="row">
+			<?php if ( is_home() ) { ?>
 			<div class="col-md-1 pull-right text-center">
 				<a href="#" id="trigger-overlay" class="overlay-trigger"><h2><i class="fa fa-bars"></i></h2></a>
 			</div>
+			<?php } ?>
 			<?php 
 
 					if( ! ( is_home() ) ) { 
