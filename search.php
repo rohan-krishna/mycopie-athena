@@ -7,8 +7,8 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<section id="primary" class="container-fluid">
+		<div id="main" class="container" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -40,6 +40,4 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

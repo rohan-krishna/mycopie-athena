@@ -18,20 +18,76 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
+<body <?php body_class(); ?> id="my_body">
+
+<?php
+
+//Navigation Args
+
+$args = array(
+	'theme_location' => 'page-header',
+	'container' => false
+	);
+?>
+
+<?php $display_options = get_option( 'mycopie_theme_display_options' ); ?>
+<?php $social_options = get_option( 'mycopie_theme_social_options' ); ?>
+
+<div id="page" class="container-fluid">
+	
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'mycopie-athena' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
-		</div><!-- .site-branding -->
+	<?php if ( $display_options[ 'show_header' ] ) { ?>
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'mycopie-athena' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+	<header id="masthead" class="site-header" role="banner">
+		<div class="row">
+			<?php 
+
+					if( ! ( is_home() ) ) { 
+			?>
+			<div class="col-md-12 bg-color-blue">
+				<div class="col-md-3">
+					<a href="<?php bloginfo('url'); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/images/logo-trans.png" draggable="false" class="page-logo" />
+					</a>
+				</div>
+				<div class="col-md-3 search-bar pull-right">
+					<?php get_search_form(); ?>
+				</div>
+			</div>
+			<div class="col-md-12 header">
+				<div class="col-md-11">
+
+					<?php wp_nav_menu($args); ?>
+
+					<?php } ?>
+				</div>
+
+				<?php if ( is_home() ) { ?>
+				<div class="col-md-1 pull-right text-center">
+					<a href="#" id="trigger-overlay" class="overlay-trigger fg-color-white"><h2><i class="fa fa-bars"></i></h2></a>
+				</div>
+
+				<?php } ?>
+
+				<?php if ( ! is_home() ) { ?>
+
+				<div class="col-md-12">
+					<h1><?php echo get_the_title(); ?></h1>					
+					<?php 
+						if ( function_exists('yoast_breadcrumb') ) {
+						yoast_breadcrumb('<p id="breadcrumbs" class="breadcrumbs">','</p>');
+					} ?>
+
+				</div>
+
+				<?php } ?>
+
+			</div>
+
+		</div>
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<?php } ?>
+	
+	<div id="content">

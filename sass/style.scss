@@ -1,0 +1,732 @@
+/*
+
+File Name : style.sass
+Package Name : MyCopie Athena
+Language : SASS
+Author : Rohan Krishna
+Version : 0.1
+Compiled Using : Scout
+Platform : Widows
+GitHub : rohan-krishna/mycopie-athena.git
+
+*/
+
+/*
+
+Global Layout Designs
+
+*/
+
+@import 'bourbon/bourbon';
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,300,700,400);
+
+$primary-font : 'Roboto', sans-serif;
+$primary-color : #2196F3;
+
+.page-wrapper {
+	@include transition(transform 0.5s ease-in-out);
+}
+.page-wrapper.overlay-open {
+	@include transform(scale(0.8));
+}
+
+html,body {
+	font-family: $primary-font;
+}
+.header {
+	border-top: 3px solid #2196F3;
+	background: #42A5F5;
+
+	h1 {
+		color: #fff;
+	}
+}
+.search-form {
+	width: 100%;
+	overflow: hidden;
+}
+.search-bar {
+
+	display: table;
+
+	input[type="text"] {
+		font-size: 1em;
+		display: inline-block;
+		width: 100%;
+		max-height: 47px;
+		border-color: $primary-color;
+		overflow: hidden;
+		padding: 0.52em;
+		font-weight: 400;
+		margin-top: 5.0%;
+		background: #42A5F5;
+		color: #ddd;
+		@include transition(background 0.3s linear);
+
+		&::-webkit-input-placeholder {
+			color: #ddd;
+		}
+
+		&:focus {
+			background: #fff;
+			color: #333;
+		}
+	}
+}
+a {
+	color: $primary-color;
+	@include transition(all 0.3s ease-in-out);
+
+	&:hover {
+		color: #333;
+	}
+}
+input[type="submit"] {
+	background: $primary-color;
+	border: 0;
+	box-shadow: none;
+	text-shadow: none;
+	color: #fff;
+	font-weight: 700;
+	font-size: 12px;
+	padding : 1.52em;
+	margin: 0.52em auto;
+}
+
+/* 
+
+Re-usable Code Snippets
+
+*/
+
+.text-center {
+	text-align: center;
+}
+.margin-top-152 {
+	margin: 1.52em 0;
+}
+
+h1,h2,h3,h4,h5 {
+	font-weight: 700;
+}
+
+.btn-bars {
+	display: block;
+	widows: 100%;
+	height: 45px;
+	background: #333;
+}
+.btn-bar {
+	width: 75%;
+	margin: 1% auto;
+	background: #fff;
+	height: 2px;
+}
+.btn-bar:nth-child(1) {
+	margin-top: 1.52em;
+}
+.padding--152 {
+	padding: 1.52em;
+}
+.landing--section {
+}
+#colored-btn {
+	a {
+		color: #fff;
+		font-weight: 700;
+
+		&:hover {
+		}
+	}
+}
+.btn-more {
+	a {
+		background: #2196F3;
+
+		&:hover {
+			background: #42A5F5;
+		}
+	}
+}
+
+.slide-wrapper {
+	max-width: 50%;
+	margin: 0 auto;
+}
+#outline {
+	border: 1em solid #eee;
+}
+.divider {
+	max-width: 30%;
+	margin: 1.52em auto;
+	height: 1px;
+	background: #ddd;
+}
+.txt-shadow {
+	text-shadow: 6px 6px 15px #333;
+}
+
+.fa-stack {
+	cursor: pointer;
+	@include transition(all 0.3s ease-in-out);
+}
+.fa-stack-1x {
+	text-shadow: 6px 6px 15px #333;
+	@include transition(all 0.3s ease-in-out);
+}
+.fa-stack:hover > .fa-stack-1x {
+	text-shadow: none;
+	@include transition(all 0.3s ease-in-out);
+}
+.overlay-trigger {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	z-index: 999;
+}
+blockquote {
+	background: #eee;
+	margin: 0.5em 10px;
+	padding: 1.5em 10px;
+	quotes: "\201C""\201D""\2018""\2019";
+	text-align: center;
+}
+blockquote:before {
+	color: #ccc;
+	content: open-quote;
+	font-size: 6em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+}
+blockquote p {
+	display: inline;
+	font-weight: 700;
+}
+.testimonial-wrapper {
+	figure {
+		max-width: 15%;
+		margin: 0 auto;
+		overflow: hidden;
+		display: block;
+		text-align: center;
+
+
+		figcaption p {
+			border-bottom: 1px dotted #333;
+			overflow: hidden;
+			display: inline-block;
+			margin: 0;
+		}
+
+		img {
+			height: 64px;
+			max-width: 64px;
+			border-radius: 50%;
+			margin: 0 auto;
+			display: block;
+		}
+	}
+}
+.header {
+	ul {
+		display: inline-block;
+		overflow: hidden;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		position: relative;
+
+		li {
+			float: left;
+			
+
+			a {
+				display: block;
+				padding: 5px 10px;
+				color: #333;
+				font-weight: 700;
+				text-decoration: none;
+				position: relative;
+				z-index: 99999;
+
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+		li.current-menu-item {
+			a {
+				background: #2196F3;
+				color: #fff;
+				border-bottom: 1px solid #1E88E5;
+
+				&:hover {
+					color: #ddd;
+				}
+			}
+		}
+	}
+}
+.breadcrumbs {
+	a {
+		color: #ddd;
+	}
+}
+/*-----------------------------------------------------------------------
+
+The Wonderful CSS Flip Effect
+
+------------------------------------------------------------------------*/
+
+.flip-container {
+
+	-webkit-perspective: 1000;
+
+	-moz-perspective: 1000;
+
+	 perspective: 1000;
+
+}
+
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+
+	transform: rotateY(180deg);
+
+	-webkit-transform: rotateY(180deg);
+
+	-moz-transform: rotateY(180deg);
+
+}
+
+.flip-container, .front, .back {
+
+	width: 167px;
+
+	height: 235px;
+
+}
+
+.flipper {
+
+	-webkit-transition : 600ms;
+
+	-moz-transition : 600ms;
+
+	 transition : 600ms;
+
+	 -webkit-transform-style : preserve-3d;
+
+	 -moz-transform-style : preserve-3d;
+
+	  transform-style : preserve-3d;
+
+
+
+	position: relative;
+
+}
+
+.front, .back {
+
+	backface-visibility : hidden;
+
+	-webkit-backface-visibility: hidden;
+
+	-moz-backface-visibility: hidden;
+
+	position: absolute;
+
+	top: 0;
+
+	left: 0;
+
+	transform-style : preserve-3d;
+
+}
+
+.front {
+
+	z-index: 2;
+
+}
+
+.back {
+
+	-webkit-transform : rotateY(180deg);
+
+	-moz-transform : rotateY(180deg);
+
+	 transform : rotateY(180deg);
+
+}
+
+.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+
+	-moz-transform: rotateY(180deg);
+
+	-webkit-transform: rotateY(180deg);
+
+	 transform: rotateY(180deg);
+
+}
+/*
+
+Material Design Color Snippets
+
+*/
+.bg-color {
+	@include transition-property(background);
+	@include transition-delay(0.3s);
+	@include transition-timing-function(ease-in-out);
+}
+.bg-color-blue {
+	background: #2196F3;	
+}
+.bg-color-333 {
+	background: #333;
+}
+.bg-color-indigo {
+	background: #3F51B5;
+}
+
+.fg-color-white {
+	color: #f2f2f2;
+}
+.fg-color-indigo {
+	color: #3F51B5;
+}
+.fg-color-red {
+	color: #F44336;
+}
+.fg-color-teal {
+	color: #009688;
+}
+.fg-color-green {
+	color: #4CAF50;
+}
+
+
+/*-----------------*/
+/***** Apollo *****/
+/*-----------------*/
+.single-post-entry figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	margin: 0 1%;
+	min-width: 100%;
+	max-width: 480px;
+	min-height: 150px;
+	max-height: 300px;
+	width: 48%;
+	height: auto;
+	background: #3085a3;
+	text-align: center;
+	cursor: pointer;
+}
+.single-post-entry img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: 100%;
+	opacity: 0.8;
+}
+.single-post-entry figure figcaption {
+	padding: 1em;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.single-post-entry figure figcaption::before,
+.single-post-entry figure figcaption::after {
+	pointer-events: none;
+}
+
+.single-post-entry figure figcaption,
+.single-post-entry figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.single-post-entry figure figcaption > a {
+	z-index: 1000;
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	opacity: 0;
+}
+
+.single-post-entry figure h2 {
+	word-spacing: -0.15em;
+	font-weight: 300;
+}
+
+.single-post-entry figure h2 span {
+	font-weight: 800;
+}
+
+.single-post-entry figure h2,
+.single-post-entry figure p {
+	margin: 0;
+}
+
+.single-post-entry figure p {
+	letter-spacing: 1px;
+	font-size: 68.5%;
+}
+
+figure.effect-apollo {
+	background: #3498db;
+}
+
+figure.effect-apollo img {
+	opacity: 0.95;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale3d(1.05,1.05,1);
+	transform: scale3d(1.05,1.05,1);
+}
+
+figure.effect-apollo figcaption::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.5);
+	content: '';
+	-webkit-transition: -webkit-transform 0.6s;
+	transition: transform 0.6s;
+	-webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+}
+
+figure.effect-apollo p {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin: 3em;
+	padding: 0 1em;
+	max-width: 150px;
+	border-right: 4px solid #fff;
+	text-align: right;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+}
+
+figure.effect-apollo h2 {
+	text-align: left;
+}
+
+figure.effect-apollo:hover img {
+	opacity: 0.6;
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+}
+
+figure.effect-apollo:hover figcaption::before {
+	-webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+
+figure.effect-apollo:hover p {
+	opacity: 1;
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+/*
+
+Page Designs & Tweaks
+
+*/
+.page-logo {
+	display: block;
+	max-width: 128px;
+	margin: 1.52em 0px;
+}
+
+/*
+
+About Us Page
+
+*/
+.team-slider,#buddySlider {
+	text-align: center;
+	
+	img {
+		border: 1px solid #ddd;
+		padding: 5px;
+		max-width: 150px;
+		margin: 0 auto;
+	}
+}
+
+/*
+
+Advertise Page
+
+*/
+.cu-line {
+
+	background: transparent;
+
+	border: 3px solid #f2f2f2;
+
+}
+.cu-madison {
+
+	background: #2C3E50;
+
+}
+
+.cu-purple {
+
+	background: #1F3A93;
+
+}
+
+.cu-eucal {
+
+	background: #26A65B;
+
+}
+
+.cu-salem {
+
+	background: #1E824C;
+
+}
+
+.cu-blue {
+
+	background: #3498DB;
+
+}
+
+.cu-flam {
+
+	background: #EF4836;
+
+}
+
+.cu-line {
+
+	background: transparent;
+
+	border: 3px solid #f2f2f2;
+
+}
+#heroIcon {
+
+	overflow: hidden;
+
+	display: table;
+
+	width: 128px;
+
+	height: 128px;
+
+	text-align: center;
+
+	border-radius: 50%;
+
+	margin: 0 auto;
+
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+
+box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+
+}
+
+#heroIcon a {
+
+	display: table-cell;
+
+	vertical-align: middle;
+
+	text-align: center;
+
+	color: #fff;
+
+}
+
+#heroIcon:hover {
+
+	border: 3px solid rgba(255,255,255,0.8);
+
+	transition: border-width 200ms linear;
+
+}
+
+#heroIcon:active {
+
+	transform: rotateX(15deg);
+
+}
+#heroIconAds {
+
+	overflow: hidden;
+
+	display: table;
+
+	width: 128px;
+
+	height: 128px;
+
+	text-align: center;
+
+	border-radius: 50%;
+
+	margin: 0 auto;
+
+}
+
+#heroIconAds a {
+
+	display: table-cell;
+
+	vertical-align: middle;
+
+	text-align: center;
+
+}
+
+#heroIconAds:hover {
+
+	background: #34AADC;
+
+	transition: background 200ms ease-in-out;
+
+}
+
+#heroIconAds:hover a {
+
+	color: #fff;
+
+}
+
+#heroIconAds:active {
+
+	transform: rotateX(15deg);
+
+}
+
+/*
+
+Site Footer
+
+*/
+.site-footer {
+	background: $primary-color;
+	color: #fff;
+	text-align: center;
+	padding: 1.52em 0;
+}
