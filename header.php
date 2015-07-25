@@ -41,6 +41,9 @@ $args = array(
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="row">
+			<div class="col-md-1 pull-right text-center">
+				<a href="#" id="trigger-overlay" class="overlay-trigger"><h2><i class="fa fa-bars"></i></h2></a>
+			</div>
 			<?php 
 
 					if( ! ( is_home() ) ) { 
@@ -55,18 +58,21 @@ $args = array(
 					<?php get_search_form(); ?>
 				</div>
 			</div>
+
+			<?php } ?>
+
+			<?php if ( ! is_home() ) { ?> 
+
 			<div class="col-md-12 header">
 				<div class="col-md-11">
 
 					<?php wp_nav_menu($args); ?>
 
-					<?php } ?>
 				</div>
 
+				<?php } ?>
+
 				<?php if ( is_home() ) { ?>
-				<div class="col-md-1 pull-right text-center">
-					<a href="#" id="trigger-overlay" class="overlay-trigger fg-color-white"><h2><i class="fa fa-bars"></i></h2></a>
-				</div>
 
 				<?php } ?>
 
