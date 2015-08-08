@@ -7,6 +7,7 @@ Author : Rohan Krishna
 Version : 0.1
 Compiled Using : Scout
 Platform : Widows
+Plugin: Bourbon,Bower
 GitHub : rohan-krishna/mycopie-athena.git
 
 */
@@ -35,16 +36,19 @@ html,body {
 	font-family: $primary-font;
 }
 .header {
-	border-top: 3px solid #2196F3;
-	background: #42A5F5;
-
-	h1 {
-		color: #fff;
-	}
+	border-top: 1px solid #42A5F5;
+}
+.top-header {
+	background: #fafafa;
+	border-bottom: 1px solid #dfdfdf;
 }
 .search-form {
 	width: 100%;
 	overflow: hidden;
+}
+.site-logo {
+	max-width: 512px;
+	width: 100%;
 }
 .search-bar {
 
@@ -60,17 +64,18 @@ html,body {
 		padding: 0.52em;
 		font-weight: 400;
 		margin-top: 5.0%;
-		background: #42A5F5;
+		background: #fff;
 		color: #ddd;
 		@include transition(background 0.3s linear);
 
 		&::-webkit-input-placeholder {
-			color: #ddd;
+			color: #eee;
 		}
 
 		&:focus {
-			background: #fff;
-			color: #333;
+			background: $primary-color;
+			color: #fff;
+			font-weight: 700;
 		}
 	}
 }
@@ -99,7 +104,16 @@ input[type="submit"] {
 Re-usable Code Snippets
 
 */
-
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
 .text-center {
 	text-align: center;
 }
@@ -149,6 +163,28 @@ h1,h2,h3,h4,h5 {
 		}
 	}
 }
+.btn-green {
+	a {
+		background: #8BC34A;
+
+		&:hover {
+			background: #9CCC65;
+		}
+	}
+}
+.btn-ghost {
+	
+	a {
+		background: transparent;
+		border: solid 1px #fff;
+
+		&:hover {
+			background: #fff;
+			color: #333;
+		}
+	}
+
+}
 
 .slide-wrapper {
 	max-width: 50%;
@@ -172,12 +208,14 @@ h1,h2,h3,h4,h5 {
 	@include transition(all 0.3s ease-in-out);
 }
 .fa-stack-1x {
-	text-shadow: 6px 6px 15px #333;
 	@include transition(all 0.3s ease-in-out);
 }
 .fa-stack:hover > .fa-stack-1x {
-	text-shadow: none;
+	text-shadow: 6px 6px 15px #333;
 	@include transition(all 0.3s ease-in-out);
+}
+.fa-stack:hover {
+	transform: translateY(-6px);
 }
 .overlay-trigger {
 	position: relative;
@@ -230,50 +268,70 @@ blockquote p {
 		}
 	}
 }
-.header {
-	ul {
+.page-menu {
 		display: inline-block;
 		overflow: hidden;
 		list-style: none;
 		margin: 0;
+		margin-top: 2.52em;
 		padding-left: 0;
 		position: relative;
+		bottom: 0;
+		float: right;
 
 		li {
 			float: left;
-			
 
+			&:after {
+					content: '';
+					display: block;
+					margin: auto;
+					height: 3px;
+					width: 0em;
+					background: $primary-color;
+			}
+			&:hover:after {
+				width: 2.52em;
+				@include transition(width 0.3s cubic-bezier(0.550, 0.055, 0.675, 0.190));
+			}
+			
 			a {
 				display: block;
-				padding: 5px 10px;
+				padding: 0.8em 1.8em;
 				color: #333;
-				font-weight: 700;
+				font-weight: 600;
+				font-size: inherit;
 				text-decoration: none;
 				position: relative;
 				z-index: 99999;
+				line-height: 100%;
+
 
 				&:hover {
-					color: #fff;
+					color: $primary-color;
 				}
 			}
 		}
 		li.current-menu-item {
 			a {
-				background: #2196F3;
-				color: #fff;
-				border-bottom: 1px solid #1E88E5;
-
-				&:hover {
-					color: #ddd;
-				}
+				color: $primary-color;
+			}
+			&:after {
+				width: 2.52em;
 			}
 		}
-	}
 }
+
 .breadcrumbs {
 	a {
 		color: #ddd;
 	}
+}
+.page-heading {
+	font-weight: 200;
+}
+.border-bottom {
+	border-bottom: 1px solid #ddd;
 }
 /*-----------------------------------------------------------------------
 
@@ -391,6 +449,10 @@ Material Design Color Snippets
 .bg-color-indigo {
 	background: #3F51B5;
 }
+.bg-color-beige {
+	background: #fafafa;
+}
+
 
 .fg-color-white {
 	color: #f2f2f2;
@@ -408,6 +470,17 @@ Material Design Color Snippets
 	color: #4CAF50;
 }
 
+.thin-headline {
+	font-weight: 200;
+	line-height: 100%;
+}
+h1.thin-headline {
+	font-size: 4.82em;
+}
+h3.thin-headline {
+	font-size: 1.52em;
+	margin-top: 0;
+}
 
 /*-----------------*/
 /***** Apollo *****/
@@ -550,7 +623,7 @@ Page Designs & Tweaks
 */
 .page-logo {
 	display: block;
-	max-width: 128px;
+	max-width: 256px;
 	margin: 1.52em 0px;
 }
 

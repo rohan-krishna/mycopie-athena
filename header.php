@@ -26,7 +26,8 @@
 
 $args = array(
 	'theme_location' => 'page-header',
-	'container' => false
+	'container' => false,
+	'menu_class' => 'page-menu clearfix'
 	);
 ?>
 
@@ -40,39 +41,36 @@ $args = array(
 	<?php if ( $display_options[ 'show_header' ] ) { ?>
 
 	<header id="masthead" class="site-header" role="banner">
+		<?php /*
 		<div class="row">
-			<?php if ( is_home() ) { ?>
 			<div class="col-md-1 pull-right text-center">
 				<a href="#" id="trigger-overlay" class="overlay-trigger"><h2><i class="fa fa-bars"></i></h2></a>
 			</div>
-			<?php } ?>
-			<?php 
-
-					if( ! ( is_home() ) ) { 
-			?>
-			<div class="col-md-12 bg-color-blue">
-				<div class="col-md-3">
-					<a href="<?php bloginfo('url'); ?>">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/logo-trans.png" draggable="false" class="page-logo" />
-					</a>
-				</div>
-				<div class="col-md-3 search-bar pull-right">
-					<?php get_search_form(); ?>
+		*/ ?>
+			<div class="col-md-12 top-header">
+				<div class="container">
+					<h3>Hello</h3>
 				</div>
 			</div>
-
-			<?php } ?>
-
-			<?php if ( ! is_home() ) { ?> 
-
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<a href="<?php bloginfo('url'); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" draggable="false" class="page-logo" />
+					</a>
+				</div>
+				<div class="col-md-9 search-bar pull-right">
+					<?php wp_nav_menu($args); ?>
+				</div>
+			</div>
+			
+		
 			<div class="col-md-12 header">
 				<div class="col-md-11">
-
+					<!--
 					<?php wp_nav_menu($args); ?>
-
+					!-->
 				</div>
 
-				<?php } ?>
 
 				<?php if ( is_home() ) { ?>
 
@@ -81,11 +79,17 @@ $args = array(
 				<?php if ( ! is_home() ) { ?>
 
 				<div class="col-md-12">
-					<h1><?php echo get_the_title(); ?></h1>					
-					<?php 
+					<div class="container border-bottom">
+						<h2 class="page-heading"><?php echo get_the_title(); ?></h2>
+					</div>
+										
+					<?php
+						/* 
 						if ( function_exists('yoast_breadcrumb') ) {
 						yoast_breadcrumb('<p id="breadcrumbs" class="breadcrumbs">','</p>');
-					} ?>
+					} 
+						*/
+					?>
 
 				</div>
 

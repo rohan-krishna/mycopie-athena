@@ -8,6 +8,7 @@ Author : Rohan Krishna
 Version : 0.1
 Compiled Using : Scout
 Platform : Widows
+Plugin: Bourbon,Bower
 GitHub : rohan-krishna/mycopie-athena.git
 
 */
@@ -16,14 +17,14 @@ GitHub : rohan-krishna/mycopie-athena.git
 Global Layout Designs
 
 */
-/* line 27, ../../sass/style.scss */
+/* line 28, ../../sass/style.scss */
 .page-wrapper {
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
   -moz-transition: -moz-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
 }
 
-/* line 30, ../../sass/style.scss */
+/* line 31, ../../sass/style.scss */
 .page-wrapper.overlay-open {
   -webkit-transform: scale(0.8);
   -moz-transform: scale(0.8);
@@ -32,19 +33,20 @@ Global Layout Designs
   transform: scale(0.8);
 }
 
-/* line 34, ../../sass/style.scss */
+/* line 35, ../../sass/style.scss */
 html, body {
   font-family: "Roboto", sans-serif;
 }
 
-/* line 37, ../../sass/style.scss */
+/* line 38, ../../sass/style.scss */
 .header {
-  border-top: 3px solid #2196F3;
-  background: #42A5F5;
+  border-top: 1px solid #42A5F5;
 }
+
 /* line 41, ../../sass/style.scss */
-.header h1 {
-  color: #fff;
+.top-header {
+  background: #fafafa;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 /* line 45, ../../sass/style.scss */
@@ -54,10 +56,16 @@ html, body {
 }
 
 /* line 49, ../../sass/style.scss */
+.site-logo {
+  max-width: 512px;
+  width: 100%;
+}
+
+/* line 53, ../../sass/style.scss */
 .search-bar {
   display: table;
 }
-/* line 53, ../../sass/style.scss */
+/* line 57, ../../sass/style.scss */
 .search-bar input[type="text"] {
   font-size: 1em;
   display: inline-block;
@@ -68,35 +76,36 @@ html, body {
   padding: 0.52em;
   font-weight: 400;
   margin-top: 5.0%;
-  background: #42A5F5;
+  background: #fff;
   color: #ddd;
   -webkit-transition: background 0.3s linear;
   -moz-transition: background 0.3s linear;
   transition: background 0.3s linear;
 }
-/* line 67, ../../sass/style.scss */
-.search-bar input[type="text"]::-webkit-input-placeholder {
-  color: #ddd;
-}
 /* line 71, ../../sass/style.scss */
+.search-bar input[type="text"]::-webkit-input-placeholder {
+  color: #eee;
+}
+/* line 75, ../../sass/style.scss */
 .search-bar input[type="text"]:focus {
-  background: #fff;
-  color: #333;
+  background: #2196f3;
+  color: #fff;
+  font-weight: 700;
 }
 
-/* line 77, ../../sass/style.scss */
+/* line 82, ../../sass/style.scss */
 a {
   color: #2196f3;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 81, ../../sass/style.scss */
+/* line 86, ../../sass/style.scss */
 a:hover {
   color: #333;
 }
 
-/* line 85, ../../sass/style.scss */
+/* line 90, ../../sass/style.scss */
 input[type="submit"] {
   background: #2196f3;
   border: 0;
@@ -114,22 +123,44 @@ input[type="submit"] {
 Re-usable Code Snippets
 
 */
-/* line 103, ../../sass/style.scss */
+/* line 107, ../../sass/style.scss */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/* line 115, ../../sass/style.scss */
+* html .clearfix {
+  zoom: 1;
+}
+
+/* IE6 */
+/* line 116, ../../sass/style.scss */
+*:first-child + html .clearfix {
+  zoom: 1;
+}
+
+/* IE7 */
+/* line 117, ../../sass/style.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 106, ../../sass/style.scss */
+/* line 120, ../../sass/style.scss */
 .margin-top-152 {
   margin: 1.52em 0;
 }
 
-/* line 110, ../../sass/style.scss */
+/* line 124, ../../sass/style.scss */
 h1, h2, h3, h4, h5 {
   font-weight: 700;
 }
 
-/* line 114, ../../sass/style.scss */
+/* line 128, ../../sass/style.scss */
 .btn-bars {
   display: block;
   widows: 100%;
@@ -137,7 +168,7 @@ h1, h2, h3, h4, h5 {
   background: #333;
 }
 
-/* line 120, ../../sass/style.scss */
+/* line 134, ../../sass/style.scss */
 .btn-bar {
   width: 75%;
   margin: 1% auto;
@@ -145,43 +176,63 @@ h1, h2, h3, h4, h5 {
   height: 2px;
 }
 
-/* line 126, ../../sass/style.scss */
+/* line 140, ../../sass/style.scss */
 .btn-bar:nth-child(1) {
   margin-top: 1.52em;
 }
 
-/* line 129, ../../sass/style.scss */
+/* line 143, ../../sass/style.scss */
 .padding--152 {
   padding: 1.52em;
 }
 
-/* line 135, ../../sass/style.scss */
+/* line 149, ../../sass/style.scss */
 #colored-btn a {
   color: #fff;
   font-weight: 700;
 }
 
-/* line 144, ../../sass/style.scss */
+/* line 158, ../../sass/style.scss */
 .btn-more a {
   background: #2196F3;
 }
-/* line 147, ../../sass/style.scss */
+/* line 161, ../../sass/style.scss */
 .btn-more a:hover {
   background: #42A5F5;
 }
 
-/* line 153, ../../sass/style.scss */
+/* line 167, ../../sass/style.scss */
+.btn-green a {
+  background: #8BC34A;
+}
+/* line 170, ../../sass/style.scss */
+.btn-green a:hover {
+  background: #9CCC65;
+}
+
+/* line 177, ../../sass/style.scss */
+.btn-ghost a {
+  background: transparent;
+  border: solid 1px #fff;
+}
+/* line 181, ../../sass/style.scss */
+.btn-ghost a:hover {
+  background: #fff;
+  color: #333;
+}
+
+/* line 189, ../../sass/style.scss */
 .slide-wrapper {
   max-width: 50%;
   margin: 0 auto;
 }
 
-/* line 157, ../../sass/style.scss */
+/* line 193, ../../sass/style.scss */
 #outline {
   border: 1em solid #eee;
 }
 
-/* line 160, ../../sass/style.scss */
+/* line 196, ../../sass/style.scss */
 .divider {
   max-width: 30%;
   margin: 1.52em auto;
@@ -189,12 +240,12 @@ h1, h2, h3, h4, h5 {
   background: #ddd;
 }
 
-/* line 166, ../../sass/style.scss */
+/* line 202, ../../sass/style.scss */
 .txt-shadow {
   text-shadow: 6px 6px 15px #333;
 }
 
-/* line 170, ../../sass/style.scss */
+/* line 206, ../../sass/style.scss */
 .fa-stack {
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
@@ -202,23 +253,27 @@ h1, h2, h3, h4, h5 {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 174, ../../sass/style.scss */
+/* line 210, ../../sass/style.scss */
 .fa-stack-1x {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 213, ../../sass/style.scss */
+.fa-stack:hover > .fa-stack-1x {
   text-shadow: 6px 6px 15px #333;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-/* line 178, ../../sass/style.scss */
-.fa-stack:hover > .fa-stack-1x {
-  text-shadow: none;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+/* line 217, ../../sass/style.scss */
+.fa-stack:hover {
+  transform: translateY(-6px);
 }
 
-/* line 182, ../../sass/style.scss */
+/* line 220, ../../sass/style.scss */
 .overlay-trigger {
   position: relative;
   display: block;
@@ -227,7 +282,7 @@ h1, h2, h3, h4, h5 {
   color: #333;
 }
 
-/* line 189, ../../sass/style.scss */
+/* line 227, ../../sass/style.scss */
 blockquote {
   background: #eee;
   margin: 0.5em 10px;
@@ -236,7 +291,7 @@ blockquote {
   text-align: center;
 }
 
-/* line 196, ../../sass/style.scss */
+/* line 234, ../../sass/style.scss */
 blockquote:before {
   color: #ccc;
   content: open-quote;
@@ -246,13 +301,13 @@ blockquote:before {
   vertical-align: -0.4em;
 }
 
-/* line 204, ../../sass/style.scss */
+/* line 242, ../../sass/style.scss */
 blockquote p {
   display: inline;
   font-weight: 700;
 }
 
-/* line 209, ../../sass/style.scss */
+/* line 247, ../../sass/style.scss */
 .testimonial-wrapper figure {
   max-width: 15%;
   margin: 0 auto;
@@ -260,14 +315,14 @@ blockquote p {
   display: block;
   text-align: center;
 }
-/* line 217, ../../sass/style.scss */
+/* line 255, ../../sass/style.scss */
 .testimonial-wrapper figure figcaption p {
   border-bottom: 1px dotted #333;
   overflow: hidden;
   display: inline-block;
   margin: 0;
 }
-/* line 224, ../../sass/style.scss */
+/* line 262, ../../sass/style.scss */
 .testimonial-wrapper figure img {
   height: 64px;
   max-width: 64px;
@@ -276,47 +331,76 @@ blockquote p {
   display: block;
 }
 
-/* line 234, ../../sass/style.scss */
-.header ul {
+/* line 271, ../../sass/style.scss */
+.page-menu {
   display: inline-block;
   overflow: hidden;
   list-style: none;
   margin: 0;
+  margin-top: 2.52em;
   padding-left: 0;
   position: relative;
+  bottom: 0;
+  float: right;
 }
-/* line 242, ../../sass/style.scss */
-.header ul li {
+/* line 282, ../../sass/style.scss */
+.page-menu li {
   float: left;
 }
-/* line 246, ../../sass/style.scss */
-.header ul li a {
+/* line 285, ../../sass/style.scss */
+.page-menu li:after {
+  content: '';
   display: block;
-  padding: 5px 10px;
+  margin: auto;
+  height: 3px;
+  width: 0em;
+  background: #2196f3;
+}
+/* line 293, ../../sass/style.scss */
+.page-menu li:hover:after {
+  width: 2.52em;
+  -webkit-transition: width 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  -moz-transition: width 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: width 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+/* line 298, ../../sass/style.scss */
+.page-menu li a {
+  display: block;
+  padding: 0.8em 1.8em;
   color: #333;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: inherit;
   text-decoration: none;
   position: relative;
   z-index: 99999;
+  line-height: 100%;
 }
-/* line 255, ../../sass/style.scss */
-.header ul li a:hover {
-  color: #fff;
+/* line 310, ../../sass/style.scss */
+.page-menu li a:hover {
+  color: #2196f3;
 }
-/* line 261, ../../sass/style.scss */
-.header ul li.current-menu-item a {
-  background: #2196F3;
-  color: #fff;
-  border-bottom: 1px solid #1E88E5;
+/* line 316, ../../sass/style.scss */
+.page-menu li.current-menu-item a {
+  color: #2196f3;
 }
-/* line 266, ../../sass/style.scss */
-.header ul li.current-menu-item a:hover {
+/* line 319, ../../sass/style.scss */
+.page-menu li.current-menu-item:after {
+  width: 2.52em;
+}
+
+/* line 326, ../../sass/style.scss */
+.breadcrumbs a {
   color: #ddd;
 }
 
-/* line 274, ../../sass/style.scss */
-.breadcrumbs a {
-  color: #ddd;
+/* line 330, ../../sass/style.scss */
+.page-heading {
+  font-weight: 200;
+}
+
+/* line 333, ../../sass/style.scss */
+.border-bottom {
+  border-bottom: 1px solid #ddd;
 }
 
 /*-----------------------------------------------------------------------
@@ -324,27 +408,27 @@ blockquote p {
 The Wonderful CSS Flip Effect
 
 ------------------------------------------------------------------------*/
-/* line 284, ../../sass/style.scss */
+/* line 342, ../../sass/style.scss */
 .flip-container {
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
   perspective: 1000;
 }
 
-/* line 294, ../../sass/style.scss */
+/* line 352, ../../sass/style.scss */
 .flip-container:hover .flipper, .flip-container.hover .flipper {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
 }
 
-/* line 304, ../../sass/style.scss */
+/* line 362, ../../sass/style.scss */
 .flip-container, .front, .back {
   width: 167px;
   height: 235px;
 }
 
-/* line 312, ../../sass/style.scss */
+/* line 370, ../../sass/style.scss */
 .flipper {
   -webkit-transition: 600ms;
   -moz-transition: 600ms;
@@ -355,7 +439,7 @@ The Wonderful CSS Flip Effect
   position: relative;
 }
 
-/* line 332, ../../sass/style.scss */
+/* line 390, ../../sass/style.scss */
 .front, .back {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -366,19 +450,19 @@ The Wonderful CSS Flip Effect
   transform-style: preserve-3d;
 }
 
-/* line 350, ../../sass/style.scss */
+/* line 408, ../../sass/style.scss */
 .front {
   z-index: 2;
 }
 
-/* line 356, ../../sass/style.scss */
+/* line 414, ../../sass/style.scss */
 .back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-/* line 366, ../../sass/style.scss */
+/* line 424, ../../sass/style.scss */
 .flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
   -moz-transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
@@ -390,7 +474,7 @@ The Wonderful CSS Flip Effect
 Material Design Color Snippets
 
 */
-/* line 380, ../../sass/style.scss */
+/* line 438, ../../sass/style.scss */
 .bg-color {
   -webkit-transition-property: background;
   -moz-transition-property: background;
@@ -403,50 +487,72 @@ Material Design Color Snippets
   transition-timing-function: ease-in-out;
 }
 
-/* line 385, ../../sass/style.scss */
+/* line 443, ../../sass/style.scss */
 .bg-color-blue {
   background: #2196F3;
 }
 
-/* line 388, ../../sass/style.scss */
+/* line 446, ../../sass/style.scss */
 .bg-color-333 {
   background: #333;
 }
 
-/* line 391, ../../sass/style.scss */
+/* line 449, ../../sass/style.scss */
 .bg-color-indigo {
   background: #3F51B5;
 }
 
-/* line 395, ../../sass/style.scss */
+/* line 452, ../../sass/style.scss */
+.bg-color-beige {
+  background: #fafafa;
+}
+
+/* line 457, ../../sass/style.scss */
 .fg-color-white {
   color: #f2f2f2;
 }
 
-/* line 398, ../../sass/style.scss */
+/* line 460, ../../sass/style.scss */
 .fg-color-indigo {
   color: #3F51B5;
 }
 
-/* line 401, ../../sass/style.scss */
+/* line 463, ../../sass/style.scss */
 .fg-color-red {
   color: #F44336;
 }
 
-/* line 404, ../../sass/style.scss */
+/* line 466, ../../sass/style.scss */
 .fg-color-teal {
   color: #009688;
 }
 
-/* line 407, ../../sass/style.scss */
+/* line 469, ../../sass/style.scss */
 .fg-color-green {
   color: #4CAF50;
+}
+
+/* line 473, ../../sass/style.scss */
+.thin-headline {
+  font-weight: 200;
+  line-height: 100%;
+}
+
+/* line 477, ../../sass/style.scss */
+h1.thin-headline {
+  font-size: 4.82em;
+}
+
+/* line 480, ../../sass/style.scss */
+h3.thin-headline {
+  font-size: 1.52em;
+  margin-top: 0;
 }
 
 /*-----------------*/
 /***** Apollo *****/
 /*-----------------*/
-/* line 415, ../../sass/style.scss */
+/* line 488, ../../sass/style.scss */
 .single-post-entry figure {
   position: relative;
   float: left;
@@ -463,7 +569,7 @@ Material Design Color Snippets
   cursor: pointer;
 }
 
-/* line 430, ../../sass/style.scss */
+/* line 503, ../../sass/style.scss */
 .single-post-entry img {
   position: relative;
   display: block;
@@ -472,7 +578,7 @@ Material Design Color Snippets
   opacity: 0.8;
 }
 
-/* line 437, ../../sass/style.scss */
+/* line 510, ../../sass/style.scss */
 .single-post-entry figure figcaption {
   padding: 1em;
   color: #fff;
@@ -482,13 +588,13 @@ Material Design Color Snippets
   backface-visibility: hidden;
 }
 
-/* line 446, ../../sass/style.scss */
+/* line 519, ../../sass/style.scss */
 .single-post-entry figure figcaption::before,
 .single-post-entry figure figcaption::after {
   pointer-events: none;
 }
 
-/* line 451, ../../sass/style.scss */
+/* line 524, ../../sass/style.scss */
 .single-post-entry figure figcaption,
 .single-post-entry figure figcaption > a {
   position: absolute;
@@ -498,7 +604,7 @@ Material Design Color Snippets
   height: 100%;
 }
 
-/* line 458, ../../sass/style.scss */
+/* line 531, ../../sass/style.scss */
 .single-post-entry figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
@@ -507,35 +613,35 @@ Material Design Color Snippets
   opacity: 0;
 }
 
-/* line 466, ../../sass/style.scss */
+/* line 539, ../../sass/style.scss */
 .single-post-entry figure h2 {
   word-spacing: -0.15em;
   font-weight: 300;
 }
 
-/* line 471, ../../sass/style.scss */
+/* line 544, ../../sass/style.scss */
 .single-post-entry figure h2 span {
   font-weight: 800;
 }
 
-/* line 476, ../../sass/style.scss */
+/* line 549, ../../sass/style.scss */
 .single-post-entry figure h2,
 .single-post-entry figure p {
   margin: 0;
 }
 
-/* line 480, ../../sass/style.scss */
+/* line 553, ../../sass/style.scss */
 .single-post-entry figure p {
   letter-spacing: 1px;
   font-size: 68.5%;
 }
 
-/* line 485, ../../sass/style.scss */
+/* line 558, ../../sass/style.scss */
 figure.effect-apollo {
   background: #3498db;
 }
 
-/* line 489, ../../sass/style.scss */
+/* line 562, ../../sass/style.scss */
 figure.effect-apollo img {
   opacity: 0.95;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -544,7 +650,7 @@ figure.effect-apollo img {
   transform: scale3d(1.05, 1.05, 1);
 }
 
-/* line 497, ../../sass/style.scss */
+/* line 570, ../../sass/style.scss */
 figure.effect-apollo figcaption::before {
   position: absolute;
   top: 0;
@@ -559,7 +665,7 @@ figure.effect-apollo figcaption::before {
   transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -100%, 0);
 }
 
-/* line 511, ../../sass/style.scss */
+/* line 584, ../../sass/style.scss */
 figure.effect-apollo p {
   position: absolute;
   right: 0;
@@ -574,25 +680,25 @@ figure.effect-apollo p {
   transition: opacity 0.35s;
 }
 
-/* line 525, ../../sass/style.scss */
+/* line 598, ../../sass/style.scss */
 figure.effect-apollo h2 {
   text-align: left;
 }
 
-/* line 529, ../../sass/style.scss */
+/* line 602, ../../sass/style.scss */
 figure.effect-apollo:hover img {
   opacity: 0.6;
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
 }
 
-/* line 535, ../../sass/style.scss */
+/* line 608, ../../sass/style.scss */
 figure.effect-apollo:hover figcaption::before {
   -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 100%, 0);
   transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 100%, 0);
 }
 
-/* line 540, ../../sass/style.scss */
+/* line 613, ../../sass/style.scss */
 figure.effect-apollo:hover p {
   opacity: 1;
   -webkit-transition-delay: 0.1s;
@@ -604,10 +710,10 @@ figure.effect-apollo:hover p {
 Page Designs & Tweaks
 
 */
-/* line 551, ../../sass/style.scss */
+/* line 624, ../../sass/style.scss */
 .page-logo {
   display: block;
-  max-width: 128px;
+  max-width: 256px;
   margin: 1.52em 0px;
 }
 
@@ -616,11 +722,11 @@ Page Designs & Tweaks
 About Us Page
 
 */
-/* line 562, ../../sass/style.scss */
+/* line 635, ../../sass/style.scss */
 .team-slider, #buddySlider {
   text-align: center;
 }
-/* line 565, ../../sass/style.scss */
+/* line 638, ../../sass/style.scss */
 .team-slider img, #buddySlider img {
   border: 1px solid #ddd;
   padding: 5px;
@@ -633,49 +739,49 @@ About Us Page
 Advertise Page
 
 */
-/* line 578, ../../sass/style.scss */
+/* line 651, ../../sass/style.scss */
 .cu-line {
   background: transparent;
   border: 3px solid #f2f2f2;
 }
 
-/* line 585, ../../sass/style.scss */
+/* line 658, ../../sass/style.scss */
 .cu-madison {
   background: #2C3E50;
 }
 
-/* line 591, ../../sass/style.scss */
+/* line 664, ../../sass/style.scss */
 .cu-purple {
   background: #1F3A93;
 }
 
-/* line 597, ../../sass/style.scss */
+/* line 670, ../../sass/style.scss */
 .cu-eucal {
   background: #26A65B;
 }
 
-/* line 603, ../../sass/style.scss */
+/* line 676, ../../sass/style.scss */
 .cu-salem {
   background: #1E824C;
 }
 
-/* line 609, ../../sass/style.scss */
+/* line 682, ../../sass/style.scss */
 .cu-blue {
   background: #3498DB;
 }
 
-/* line 615, ../../sass/style.scss */
+/* line 688, ../../sass/style.scss */
 .cu-flam {
   background: #EF4836;
 }
 
-/* line 621, ../../sass/style.scss */
+/* line 694, ../../sass/style.scss */
 .cu-line {
   background: transparent;
   border: 3px solid #f2f2f2;
 }
 
-/* line 628, ../../sass/style.scss */
+/* line 701, ../../sass/style.scss */
 #heroIcon {
   overflow: hidden;
   display: table;
@@ -688,7 +794,7 @@ Advertise Page
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* line 650, ../../sass/style.scss */
+/* line 723, ../../sass/style.scss */
 #heroIcon a {
   display: table-cell;
   vertical-align: middle;
@@ -696,18 +802,18 @@ Advertise Page
   color: #fff;
 }
 
-/* line 662, ../../sass/style.scss */
+/* line 735, ../../sass/style.scss */
 #heroIcon:hover {
   border: 3px solid rgba(255, 255, 255, 0.8);
   transition: border-width 200ms linear;
 }
 
-/* line 670, ../../sass/style.scss */
+/* line 743, ../../sass/style.scss */
 #heroIcon:active {
   transform: rotateX(15deg);
 }
 
-/* line 675, ../../sass/style.scss */
+/* line 748, ../../sass/style.scss */
 #heroIconAds {
   overflow: hidden;
   display: table;
@@ -718,25 +824,25 @@ Advertise Page
   margin: 0 auto;
 }
 
-/* line 693, ../../sass/style.scss */
+/* line 766, ../../sass/style.scss */
 #heroIconAds a {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
 }
 
-/* line 703, ../../sass/style.scss */
+/* line 776, ../../sass/style.scss */
 #heroIconAds:hover {
   background: #34AADC;
   transition: background 200ms ease-in-out;
 }
 
-/* line 711, ../../sass/style.scss */
+/* line 784, ../../sass/style.scss */
 #heroIconAds:hover a {
   color: #fff;
 }
 
-/* line 717, ../../sass/style.scss */
+/* line 790, ../../sass/style.scss */
 #heroIconAds:active {
   transform: rotateX(15deg);
 }
@@ -746,7 +852,7 @@ Advertise Page
 Site Footer
 
 */
-/* line 728, ../../sass/style.scss */
+/* line 801, ../../sass/style.scss */
 .site-footer {
   background: #2196f3;
   color: #fff;

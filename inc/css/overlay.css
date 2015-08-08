@@ -66,7 +66,7 @@ body {
 }
 
 .container {
-	background: #fff;
+	background: inherit;
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
 }

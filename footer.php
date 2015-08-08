@@ -14,7 +14,7 @@
 <?php if ( ! ( is_home() ) ) { ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<p>MyCopie &copy; 2015 | All Rights Reserved.</p>
+			<p>MyCopie &copy; 2015</p>
 					</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 <?php } ?>

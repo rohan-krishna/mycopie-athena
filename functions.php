@@ -40,6 +40,14 @@ function mycopie_athena_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	/*
+	 * Enable Site Logo Support
+	 *
+	 *@link http://jetpack.me/support/site-logo/
+	 */
+	add_theme_support('site_logo');
+
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'page-header' => esc_html__( 'Page Header Navigation Menu', 'mycopie-athena' ),
@@ -162,11 +170,12 @@ function mycopie_athena_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'mycopie_athena_scripts' );
 
-function fontawesome_dashboard() {
+function mycopie_athena_dashboard_enqueues() {
+
    wp_enqueue_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 }
 
-add_action('admin_init', 'fontawesome_dashboard');
+add_action('admin_init', 'mycopie_athena_dashboard_enqueues');
 
 
 
@@ -214,14 +223,6 @@ function mycopie_theme_page_menu() {
 		'mycopie_theme_input_examples',
 		create_function(null, 'mycopie_theme_display("input_examples");'));
 
-	add_submenu_page(
-		'mycopie_theme_menu',
-		'Front-End Options',
-		'Front-End Options',
-		'administrator',
-		'mycopie_theme_front_end_options',
-		create_function(null, 'mycopie_theme_display("front_end_options");'));
-
 }
 
 add_action('admin_menu','mycopie_theme_page_menu');
@@ -232,7 +233,8 @@ function mycopie_theme_display( $active_tab = '' ) {
 	<div class="wrap">
 		<h1><i class="fa fa-desktop"></i> MyCopie Athena</h1>
 		<h2>Theme Options</h2>
-		<p>General settings and layout settings for MyCopie Athena Theme. Built on version 3.0 using Settings API. Hand-written code by Rohan Krishna.</p>
+		<p>General settings and layout settings for MyCopie Athena Theme. Built on version 3.0 using Settings API.</p>
+		<p>Author : <a href="http://www.rohankrishna.com">Rohan Krishna</a> </p>
 
 		<?php // Make a call to report settings errors ?>
 		<?php settings_errors(); ?>
@@ -254,7 +256,6 @@ function mycopie_theme_display( $active_tab = '' ) {
 
 		<h2 class="nav-tab-wrapper">
 			<a href="?page=mycopie_theme_menu&tab=display_options" class="nav-tab <?php echo $active_tab == 'display_options' ? ' nav-tab-active' : ''; ?>">Display</a>
-			<a href="?page=mycopie_theme_front_end_options&tab=front_end_options" class="nav-tab <?php echo $active_tab == 'front_end_options' ? ' nav-tab-active' : '';?> ">Front-End Options</a>
 			<a href="?page=mycopie_theme_social_options&tab=social_options" class="nav-tab <?php echo $active_tab == 'social_options' ? ' nav-tab-active' : ''; ?>">Social</a>
 			<a href="?page=mycopie_theme_input_examples&tab=input_examples" class="nav-tab <?php echo $active_tab == 'input_examples' ? ' nav-tab-active' : ''; ?>">Input Examples</a>
 		</h2>
@@ -270,12 +271,9 @@ function mycopie_theme_display( $active_tab = '' ) {
 			} else if( $active_tab == 'social_options') {
 				settings_fields ( 'mycopie_theme_social_options' );
 				do_settings_sections( 'mycopie_theme_social_options' );
-			} else if ($active_tab == 'input_examples') {
+			} else {
 				settings_fields( 'mycopie_theme_input_examples' );
 				do_settings_sections( 'mycopie_theme_input_examples' );
-			} else {
-				settings_fields( 'mycopie_theme_front_end_options' );
-				do_settings_sections( 'mycopie_theme_front_end_options' );
 			}
 			?>
 
@@ -394,53 +392,7 @@ function mycopie_toggle_footer_callback($args) {
 	echo $html; 
 }
 
-/* Theme Front-End Options Init */
-function mycopie_theme_default_options() {
-	$options = array(
-		'show_logo' => '');
-	return $options;
-}
-function mycopie_theme_init_front_end_options() {
 
-	$options = get_option('mycopie_theme_front_end_options');
-
-	if ( false == $options ) {
-		$options = mycopie_theme_default_options();
-		add_option( 'mycopie_theme_front_end_options' );
-	}
-
-	add_settings_section(
-		'front_end_settings_section',
-		'Front-End Options',
-		'mycopie_front_end_options_callback',
-		'mycopie_theme_front_end_options');
-
-	add_settings_field(
-		'show_logo',
-		'Logo',
-		'mycopie_logo_callback',
-		'mycopie_theme_front_end_options',
-		'front_end_settings_section');
-
-	register_setting(
-		'mycopie_theme_front_end_options',
-		'mycopie_theme_front_end_options',
-		'mycopie_theme_sanitize_social_options');
-
-}
-add_action('admin_init','mycopie_theme_init_front_end_options');
-
-function mycopie_front_end_options_callback() {
-	echo '<p>Tweak the Look and Feel.</p>';
-}
-function mycopie_logo_callback() {
-	$options = get_option('mycopie_theme_front_end_options');
-	?>
-	<input type="text" id="show_logo" name="mycopie_theme_front_end_options[show_logo]" value="<?php echo esc_url_raw($options['show_logo']); ?>" />
-	<input type="button" id="upload_logo_nutton" class="button" value="Upload Logo" />
-	<span class="description" > Upload an Image for Logo </span>
-	<?php
-}
 
 /*Theme Social Options Init */
 function mycopie_theme_init_social_options()
@@ -543,7 +495,7 @@ function mycopie_theme_sanitize_social_options( $input )
 	return apply_filters( 'mycopie_theme_sanitize_social_options' , $output, $input );
 }
 
-
+// Input Examples
 function mycopie_theme_init_input_examples()
 {
 	if( false == get_option( 'mycopie_theme_input_examples') )
@@ -635,6 +587,84 @@ add_shortcode("flipper","ImgFlipper");
 
 //Breadcrumb
 
+
+
+/**
+* Custom Taxonomies
+*
+**/
+//Create Athena Display Tags for theme wide usage
+//Hook into init action and call the function as soon as it fires
+add_action( 'init','create_athena_display_tags' );
+
+function create_athena_display_tags() {
+
+	
+	//Add New Taxonomy NOT Hierarchical
+	
+	$labels = array(
+		'name' => 'MyCopie Athena Display Tags',
+		'singular_name' => 'MyCopie Athena Display Tag',
+		'search_items' => 'Search Display Tags',
+		'all_items' => 'All Display Tags',
+		'parent_item' => 'Parent Display Tag',
+		'parent_item_colon' => 'Parent Display Tag:',
+		'edit_item' => 'Edit Display Tag',
+		'update_item' => 'Update Display Tag',
+		'add_new_item' => 'Add New Display Tag',
+		'new_item_name' => 'New Display Tag Name',
+		'menu_name' => 'Display Tags'
+		);
+	$args = array(
+		'hierarchical' => false,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array('slug' => 'athena-display-tags')
+		);
+
+	register_taxonomy('athena-display-tags','athena-display-posts',$args);
+
+}
+
+/**
+* Custom Post Types
+**/
+
+add_action( 'init' , 'athena_display_posts_init' );
+//register custom post type for athena display posts
+function athena_display_posts_init() {
+	$labels = array(
+		'name' => 'MyCopie Athena Display Posts',
+		'singular_name' => 'MyCopie Athena Display Post',
+		'menu_name' => 'Athena Display Posts');
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true);
+	register_post_type('athena-display-posts',$args);
+}
+
+//Testimonials 
+add_action( 'init', 'athena_testimonial_post_init');
+
+function athena_testimonial_post_init() {
+	$labels = array(
+		'name' => 'Athena Testimonials',
+		'singular_name' => 'Athena Testimonial',
+		'menu_name' => 'Athena Testimonial');
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'query_var' => true,
+		'show_in_menu' => true,
+		'show_ui' => true);
+
+	register_post_type('athena-testimonial',$args);
+}
 
 /**
  * Implement the Custom Header feature.
